@@ -7,10 +7,10 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
   const cardRef = useRef(null);
 
   useEffect(() => {
-    // Only apply scroll-play on mobile viewports
-    if (window.innerWidth > 768) return;
-
     const observer = new IntersectionObserver((entries) => {
+      // Only apply scroll-play on mobile viewports dynamically
+      if (window.innerWidth > 768) return;
+
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setIsHovered(true);
@@ -20,7 +20,8 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
         }
       });
     }, {
-      threshold: 0.6 // Play when 60% of the card is visible
+      threshold: 0.2, // Lower threshold ensures it plays even if card is tall
+      rootMargin: '-10% 0px -10% 0px' // Creates a sweet spot in the middle of screen
     });
 
     if (cardRef.current) {

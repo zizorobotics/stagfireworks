@@ -1479,6 +1479,16 @@ h1, h2, h3, h4 {
     gap: 1rem;
   }
 
+  /* TikTok-style scroll snapping for products */
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .product-card {
+    scroll-snap-align: center;
+    scroll-margin-top: 80px;
+  }
+
   .product-info {
     padding: 1rem 0.5rem;
   }
