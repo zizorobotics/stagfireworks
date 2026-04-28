@@ -18,7 +18,7 @@ export default function FireworkAnimation() {
     // We strictly preload the entire sequence
     for (let i = startFrame; i < totalFrames; i++) {
       const img = new Image();
-      img.src = `/animation/new_withtext/Pre-comp 1_${i.toString().padStart(5, '0')}.png`;
+      img.src = `/animation/compressed_webp/Pre-comp 1_${i.toString().padStart(5, '0')}.webp`;
 
       const onload = () => {
         loadedCount++;
