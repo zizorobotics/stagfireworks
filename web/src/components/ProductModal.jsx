@@ -130,9 +130,28 @@ export default function ProductModal({ product, isOpen, onClose, onAdd }) {
             position: activeTab === 'description' ? 'relative' : 'absolute',
             top: 0, left: 0, width: '100%'
           }}>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.6', margin: 0 }}>
-              {product.description}
-            </p>
+            <style>
+              {`
+                .desc-scroll::-webkit-scrollbar {
+                  display: none;
+                }
+              `}
+            </style>
+            <div 
+              className="desc-scroll"
+              style={{ 
+                maxHeight: '25vh', 
+                overflowY: 'auto', 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+                maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)'
+              }}
+            >
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.6', margin: 0, paddingBottom: '3rem' }}>
+                {product.description}
+              </p>
+            </div>
           </div>
 
           {product.specs && (
@@ -143,42 +162,55 @@ export default function ProductModal({ product, isOpen, onClose, onAdd }) {
               position: activeTab === 'specs' ? 'relative' : 'absolute',
               top: 0, left: 0, width: '100%'
             }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Distance:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.distance}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Shots:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.shots}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Duration:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.duration}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Noise Level:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.noise}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Height:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.height}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Firing Pattern:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.pattern}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Tube Size:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.tube}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Hazard Class:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.hazard}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Powder Weight:</span>
-                  <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.weight}</span>
+              <div 
+                className="desc-scroll"
+                style={{ 
+                  maxHeight: '25vh', 
+                  overflowY: 'auto', 
+                  scrollbarWidth: 'none', 
+                  msOverflowStyle: 'none',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+                  maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+                  paddingBottom: '3rem'
+                }}
+              >
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Distance:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.distance}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Shots:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.shots}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Duration:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.duration}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Noise Level:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.noise}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Height:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.height}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Firing Pattern:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.pattern}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Tube Size:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.tube}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Hazard Class:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.hazard}</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.5rem', gridColumn: 'span 2' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Powder Weight:</span>
+                    <span style={{ color: 'var(--accent-cyan)', fontWeight:'bold' }}>{product.specs.weight}</span>
+                  </div>
                 </div>
               </div>
             </div>
