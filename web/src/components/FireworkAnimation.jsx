@@ -95,11 +95,19 @@ export default function FireworkAnimation() {
         descRef.current.style.transform = `translate3d(0, ${(1 - easeOutQuart(p)) * 150}px, 0)`;
       }
 
-      // Dim the fireworks canvas elegantly between frames 165-170 to boost text clarity
+      // Dim the fireworks canvas elegantly to boost text clarity
       if (canvasRef.current) {
-        const dimProgress = mapRange(virtualFrame, 165, 170, 0, 1);
-        // Morph from 1.0 opacity down to 0.5 opacity
-        canvasRef.current.style.opacity = 1 - (dimProgress * 0.5);
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+          // Mobile: Start dimming 40 frames earlier (125) and go much dimmer (15% opacity)
+          const dimProgress = mapRange(virtualFrame, 125, 170, 0, 1);
+          canvasRef.current.style.opacity = 1 - (dimProgress * 0.85);
+        } else {
+          // Desktop: Original dimming (165-170, down to 50% opacity)
+          const dimProgress = mapRange(virtualFrame, 165, 170, 0, 1);
+          canvasRef.current.style.opacity = 1 - (dimProgress * 0.5);
+        }
       }
 
       // Opacity Fade Logic when scrolling out of view
