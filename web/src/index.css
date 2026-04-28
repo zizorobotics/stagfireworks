@@ -602,6 +602,76 @@ h1, h2, h3, h4 {
   .product-card h3 {
     font-size: 1rem !important;
   }
+
+  /* -------------------------------------------
+     LANDSCAPE SHRINK: OTHER SECTIONS 
+     ------------------------------------------- */
+
+  /* SALE CAROUSEL */
+  .sale-carousel-section {
+    padding: 1.5rem 0 !important;
+  }
+  .sale-carousel-section h2 {
+    font-size: 1.8rem !important;
+  }
+  .sale-carousel-section p {
+    font-size: 0.9rem !important;
+  }
+  .marquee-track > div {
+    width: 220px !important;
+  }
+  .giant-sale-badge {
+    transform: scale(0.6) !important;
+    transform-origin: top left;
+  }
+
+  /* PACKAGE BUILDER */
+  .smart-budgeter-section {
+    margin: 1rem auto !important;
+    padding: 1rem !important;
+  }
+  .smart-budgeter-section h2 {
+    font-size: 1.5rem !important;
+  }
+  .smart-budgeter-section p {
+    font-size: 0.9rem !important;
+  }
+
+  /* BRAND MARQUEE */
+  .brand-marquee-section {
+    padding: 1.5rem !important;
+  }
+  .brand-marquee-section .section-title {
+    font-size: 1.5rem !important;
+  }
+  .brand-item {
+    width: 100px !important;
+    height: 75px !important;
+  }
+  .brand-marquee-track {
+    gap: 1.5rem !important;
+  }
+
+  /* FIND WHAT YOU NEED (Trajectory) */
+  .trajectory-section {
+    padding: 1rem !important;
+  }
+  .trajectory-section .section-title {
+    font-size: 1.5rem !important;
+  }
+  .trajectory-section p {
+    font-size: 0.9rem !important;
+  }
+  .traj-card {
+    padding: 1rem !important;
+    max-width: 300px !important;
+  }
+  .traj-card h3 {
+    font-size: 1.1rem !important;
+  }
+  .traj-card p {
+    font-size: 0.85rem !important;
+  }
 }
 
 .form-group {
