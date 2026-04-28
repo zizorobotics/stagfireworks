@@ -70,7 +70,21 @@ export default function ProductModal({ product, isOpen, onClose, onAdd }) {
         )}
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-          <h2 style={{ fontSize: '2rem', color: 'var(--text-color)', margin: 0, flex: 1, paddingRight: '1rem' }}>{product.name}</h2>
+          <div 
+            className="desc-scroll"
+            style={{ 
+              flex: 1, 
+              paddingRight: '1rem',
+              maxHeight: '15vh',
+              overflowY: 'auto',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+              maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)'
+            }}
+          >
+            <h2 style={{ fontSize: '2rem', color: 'var(--text-color)', margin: 0, paddingBottom: '2rem', wordBreak: 'break-word', overflowWrap: 'break-word' }}>{product.name}</h2>
+          </div>
           {(() => {
             const brandInfo = getBrandInfo(product);
             if (!brandInfo) return null;
