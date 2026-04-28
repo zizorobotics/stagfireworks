@@ -207,7 +207,6 @@ h1, h2, h3, h4 {
   padding: 14rem 3rem 4rem 3rem;
   position: sticky;
   top: 0;
-  overflow: hidden;
 }
 
 .hero-content {
@@ -259,7 +258,7 @@ h1, h2, h3, h4 {
 }
 
 .firework-animation-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
