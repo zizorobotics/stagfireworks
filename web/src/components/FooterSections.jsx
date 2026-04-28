@@ -232,8 +232,8 @@ export default function FooterSections({ setActiveCategory }) {
                 <h3>How To Order</h3>
                 <p>Browse our extensive collection online! Once you've added your desired fireworks to your cart, submit your reservation through our secure form. We will contact you immediately to process payment over the phone and arrange a collection time from our store.</p>
                 <div className="social-links" style={{ marginTop: '1.5rem' }}>
-                  <p style={{ marginBottom: '0.8rem', color: 'var(--text-muted)', fontWeight: 'bold' }}>Follow Us On Socials:</p>
-                  <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.8rem' }}>
+                  <p style={{ marginBottom: '0.8rem', color: 'var(--text-muted)', fontWeight: 'bold', textAlign: 'center' }}>Follow Us On Socials:</p>
+                  <div style={{ display: 'flex', gap: '1rem', marginTop: '0.8rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <a href="https://instagram.com/stagfireworks1" target="_blank" rel="noreferrer" title="Instagram" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: 'white', textDecoration: 'none', boxShadow: '0 4px 15px rgba(225, 48, 108, 0.4)' }}>
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
@@ -245,6 +245,9 @@ export default function FooterSections({ setActiveCategory }) {
                     </a>
                     <a href="https://snapchat.com/add/stagfirework" target="_blank" rel="noreferrer" title="Snapchat" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: '#FFFC00', color: 'black', textDecoration: 'none', boxShadow: '0 4px 15px rgba(255, 252, 0, 0.4)' }}>
                       <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12.08 2.01C10.74 2.01 9 2.45 8.1 4.51c-.69 1.6-.29 3.8.84 5.38.07.1.18.23.23.36-.6.3-1.68.79-2.28.32-.43-.34-.5-1.12-1.02-1.15s-1.06.63-1.14 1-.03 1.15.54 1.72c1.23 1.25 3.32 1.48 4.7.75.14-.07.29-.16.51-.23a4.17 4.17 0 0 0 .7.83c-.94.75-2.23 1.11-3.69 1.45-1.39.32-3.11.72-4.08 1.94-.48.62-.48 1.51-.01 2.22.46.68 1.25 1.1 2.15 1.13.25.01.55-.02.87-.07.41-.07.82-.2 1.22-.39.81-.39 1.43-1.02 1.43-1.02s.1.09.28.27c1.07 1.09 2.19 1.34 2.59 1.39.29.04.57.06.84.06s.55-.02.84-.06c.41-.05 1.52-.3 2.59-1.39.18-.18.28-.27.28-.27s.62.63 1.43 1.02c.4.19.81.33 1.22.39.42.06.84.07 1.2.03.96-.03 1.8-.5 2.25-1.22.42-.69.41-1.57-.08-2.18-.97-1.22-2.69-1.62-4.08-1.94-1.46-.34-2.75-.7-3.69-1.45.24-.26.48-.54.7-.83.21.07.37.16.51.23 1.38.73 3.47.5 4.7-.75.57-.57.62-1.34.54-1.72-.08-.37-.62-.97-1.14-1s-.59.81-1.02 1.15c-.6.47-1.68-.02-2.28-.32.06-.13.16-.26.23-.36 1.13-1.58 1.53-3.78.84-5.38C15.16 2.45 13.42 2.01 12.08 2.01z"></path></svg>
+                    </a>
+                    <a href="/QR_Code_StagFireworks.png" target="_blank" rel="noreferrer" title="QR Code" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '12px', background: 'white', textDecoration: 'none', boxShadow: '0 4px 15px rgba(255, 255, 255, 0.2)', overflow: 'hidden' }}>
+                      <img src="/QR_Code_StagFireworks.png" alt="QR Code" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     </a>
                   </div>
                 </div>
