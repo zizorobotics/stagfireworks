@@ -577,7 +577,7 @@ h1, h2, h3, h4 {
   transform: translateY(0);
 }
 
-@media (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 950px) and (orientation: landscape) {
   .modal-content {
     max-height: 95vh;
     padding: 1rem !important;
@@ -587,6 +587,20 @@ h1, h2, h3, h4 {
     height: 40vh !important;
     width: auto !important;
     margin: 0 auto 1rem auto !important;
+  }
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+  .product-media {
+    aspect-ratio: 4/3 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .product-card {
+    padding: 0.8rem !important;
+  }
+  .product-card h3 {
+    font-size: 1rem !important;
   }
 }
 
