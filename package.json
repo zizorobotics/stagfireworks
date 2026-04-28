@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.103.3",
+    "axios": "^1.15.0",
+    "cheerio": "^1.2.0",
+    "pg": "^8.20.0"
+  }
+}
