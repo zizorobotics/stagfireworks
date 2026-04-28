@@ -1,9 +1,36 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function ProductCard({ product, onAdd, isWishlisted, onToggleWishlist, onViewDetails }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const iframeRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    // Only apply scroll-play on mobile viewports
+    if (window.innerWidth > 768) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setIsHovered(true);
+        } else {
+          setIsHovered(false);
+          setIsMuted(true);
+        }
+      });
+    }, {
+      threshold: 0.6 // Play when 60% of the card is visible
+    });
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) observer.unobserve(cardRef.current);
+    };
+  }, []);
 
   const getBrandInfo = (p) => {
     if (p.specs?.brand) {
@@ -52,6 +79,7 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
 
   return (
     <div
+      ref={cardRef}
       className="product-card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {

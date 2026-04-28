@@ -1446,15 +1446,45 @@ h1, h2, h3, h4 {
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
+  .nav-btn-text {
+    display: none;
+  }
+  
   .navbar {
     padding: 0.6rem 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+  
+  .nav-buttons-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .cart-btn {
+    padding: 0.4rem 0.6rem;
+    gap: 0;
   }
   
   .nav-brand {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-right: auto;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .product-info {
+    padding: 1rem 0.5rem;
+  }
+  
+  .product-title {
+    font-size: 0.9rem;
   }
   
   .hero-title {

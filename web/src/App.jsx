@@ -148,32 +148,32 @@ function App() {
           <div className="nav-brand" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
             <img src="/images/StagFireworksLogo.png" alt="Stag Fireworks" style={{ height: '35px', objectFit: 'contain' }} />
           </div>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div className="nav-buttons-container" style={{ display: 'flex', gap: '1rem' }}>
             <button className="cart-btn" onClick={() => window.location.href = '/safety'} style={{ color: 'var(--accent-cyan)' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
-              Safety
+              <span className="nav-btn-text">Safety</span>
             </button>
             <button className="cart-btn" onClick={() => setIsContactOpen(true)}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              Contact
+              <span className="nav-btn-text">Contact</span>
             </button>
             <button className="cart-btn" onClick={() => setIsWishlistOpen(true)}>
               <span style={{ fontSize: '1.2rem', color: wishlistItems.length > 0 ? 'var(--accent-magenta)' : 'inherit' }}>
                 {wishlistItems.length > 0 ? '♥' : '♡'}
               </span>
-              Wishlist <span className="cart-badge" style={{ background: 'transparent', border: '1px solid currentColor' }}>{wishlistItems.length}</span>
+              <span className="nav-btn-text">Wishlist</span> <span className="cart-badge" style={{ background: 'transparent', border: '1px solid currentColor' }}>{wishlistItems.length}</span>
             </button>
             <button className="cart-btn" onClick={() => setIsCartOpen(true)}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
-              Cart <span className="cart-badge">{totalItems}</span>
+              <span className="nav-btn-text">Cart</span> <span className="cart-badge">{totalItems}</span>
             </button>
           </div>
         </nav>
