@@ -578,6 +578,38 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 950px) and (orientation: landscape) {
+  /* TOP BAR & TICKER */
+  .navbar {
+    padding: 0.3rem 0.8rem !important;
+  }
+  .nav-brand img {
+    height: 20px !important;
+  }
+  .nav-btn-text {
+    display: none !important;
+  }
+  .nav-buttons-container {
+    gap: 0.5rem !important;
+  }
+  .cart-btn {
+    padding: 0.3rem 0.5rem !important;
+  }
+  .cart-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .cart-badge {
+    min-width: 16px !important;
+    height: 16px !important;
+    font-size: 0.65rem !important;
+  }
+  .promo-ticker {
+    height: 20px !important;
+  }
+  .promo-ticker-text {
+    font-size: 0.75rem !important;
+  }
+
   .modal-content {
     max-height: 95vh;
     padding: 1rem !important;
