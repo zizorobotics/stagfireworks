@@ -27,20 +27,10 @@ export default function SaleCarousel({ products, onAdd, wishlistItems, handleTog
       </style>
 
       {/* Top Left Giant UP TO 50% Text */}
-      <div style={{ position: 'absolute', top: '1rem', left: '3rem', zIndex: 10, pointerEvents: 'none', animation: 'glowPulse 2s infinite ease-in-out' }}>
-        <span style={{ display: 'block', fontSize: '2rem', color: '#ffff00', fontWeight: '900', marginLeft: '0.5rem', marginBottom: '-1rem', position: 'relative', zIndex: 2, textShadow: '0 0 10px rgba(0,0,0,0.5)' }}>UP TO</span>
-        <span style={{ 
-          fontSize: 'clamp(5rem, 10vw, 8rem)', 
-          fontWeight: 900, 
-          color: 'var(--accent-magenta)', 
-          WebkitTextStroke: '3px #ffff00',
-          lineHeight: 1,
-          display: 'inline-block',
-          position: 'relative'
-        }}>
-          50%
-        </span>
-        <span style={{ display: 'block', fontSize: '2rem', color: '#ffff00', fontWeight: '900', marginLeft: '1rem', marginTop: '-1rem', textShadow: '0 0 10px rgba(0,0,0,0.5)' }}>OFF</span>
+      <div className="giant-sale-badge" style={{ pointerEvents: 'none', animation: 'glowPulse 2s infinite ease-in-out' }}>
+        <span className="giant-sale-text-up">UP TO</span>
+        <span className="giant-sale-text-50">50%</span>
+        <span className="giant-sale-text-off">OFF</span>
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: '3rem', padding: '0 4rem', position: 'relative', zIndex: 2 }}>
