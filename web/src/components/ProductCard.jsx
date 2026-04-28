@@ -154,18 +154,18 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
       <div className="product-info">
         <h3 className="product-title" onClick={() => onViewDetails(product)} style={{ cursor: 'pointer' }}>{product.name}</h3>
         {product.specs ? (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.4rem', marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{color:'var(--accent-magenta)', fontWeight: 'bold'}}>Shots:</span> {product.specs.shots || '-'}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.4rem', marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{color:'var(--accent-magenta)', fontWeight: 'bold'}}>Shots:</span> <span style={{ flex: 1 }}>{product.specs.shots || '-'}</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{color:'var(--accent-cyan)', fontWeight: 'bold'}}>Noise:</span> {(product.specs.noise && product.specs.noise.toString() !== '-' && !product.specs.noise.toString().includes('/')) ? `${product.specs.noise}/5` : (product.specs.noise || '-')}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{color:'var(--accent-cyan)', fontWeight: 'bold'}}>Noise:</span> <span style={{ flex: 1 }}>{(product.specs.noise && product.specs.noise.toString() !== '-' && !product.specs.noise.toString().includes('/')) ? `${product.specs.noise}/5` : (product.specs.noise || '-')}</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{color:'var(--accent-magenta)', fontWeight: 'bold'}}>Time:</span> {product.specs.duration || '-'}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{color:'var(--accent-magenta)', fontWeight: 'bold'}}>Time:</span> <span style={{ flex: 1 }}>{product.specs.duration || '-'}</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{color:'var(--accent-cyan)', fontWeight: 'bold'}}>Tube:</span> {product.specs.tube || '-'}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+              <span style={{color:'var(--accent-cyan)', fontWeight: 'bold'}}>Tube:</span> <span style={{ flex: 1 }}>{product.specs.tube || '-'}</span>
             </div>
           </div>
         ) : (
