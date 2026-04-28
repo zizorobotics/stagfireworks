@@ -28,10 +28,10 @@ export default function PromoPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1200px', margin: '3rem auto', display: 'flex', flexDirection: 'column', gap: '3rem', padding: '0 1.5rem' }}>
+      <div style={{ maxWidth: '1200px', margin: '3rem auto', display: 'flex', flexDirection: 'column', gap: '3rem', padding: '0 1rem' }}>
 
         {/* Section 1: Vivid Pyrotechnics (promo2.mp4) */}
-        <div className="animate-section anim-delay-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', background: '#111218', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid var(--accent-magenta)' }}>
+        <div className="animate-section anim-delay-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem', background: '#111218', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid var(--accent-magenta)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
               Vivid Pyrotechnics
@@ -50,7 +50,7 @@ export default function PromoPage() {
         </div>
 
         {/* Section 2: Showroom Tour (promo1.mp4) */}
-        <div className="animate-section anim-delay-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', background: '#181216', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid var(--accent-cyan)', direction: 'rtl' }}>
+        <div className="animate-section anim-delay-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem', background: '#181216', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid var(--accent-cyan)', direction: 'rtl' }}>
           <div style={{ direction: 'ltr', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <span>📍</span> Rotherham Showroom Tour
@@ -67,14 +67,14 @@ export default function PromoPage() {
         </div>
 
         {/* Section 3: Extra Promos (promo3.mp4 & promo4.mp4) */}
-        <div className="animate-section anim-delay-3" style={{ background: '#111218', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid #ffd700' }}>
+        <div className="animate-section anim-delay-3" style={{ background: '#111218', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid #ffd700' }}>
           <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             More Sparks in Action
           </h2>
           <p style={{ color: '#ccc', lineHeight: '1.8', marginBottom: '2rem' }}>
             Check out some of our other latest promotional showcases featuring raw, jaw-dropping pyro in action.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem' }}>
             <video src="/videos/promo3.mp4" autoPlay loop muted playsInline controls style={{ width: '100%', borderRadius: '12px', boxSizing: 'border-box', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}></video>
             <video src="/videos/promo4.mp4" autoPlay loop muted playsInline controls style={{ width: '100%', borderRadius: '12px', boxSizing: 'border-box', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}></video>
           </div>

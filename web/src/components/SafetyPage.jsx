@@ -16,10 +16,10 @@ export default function SafetyPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: '1200px', margin: '3rem auto', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      <div style={{ maxWidth: '1200px', margin: '3rem auto', display: 'flex', flexDirection: 'column', gap: '3rem', padding: '0 1rem' }}>
         
         {/* Section 1: Video Setup Guide */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', background: '#111218', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid var(--accent-magenta)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem', background: '#111218', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid var(--accent-magenta)' }}>
           <div>
             <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <span>🛠️</span> Professional Setup Protocol
@@ -49,7 +49,7 @@ export default function SafetyPage() {
         </div>
 
         {/* Section 2: 11PM Curfew */}
-        <div style={{ background: '#181216', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid var(--accent-cyan)' }}>
+        <div style={{ background: '#181216', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid var(--accent-cyan)' }}>
           <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <span>🕒</span> The 11 PM Legal Curfew Framework
           </h2>
@@ -66,7 +66,7 @@ export default function SafetyPage() {
         </div>
 
         {/* Section 3: Safety Distances */}
-        <div style={{ background: '#0d161a', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid var(--accent-magenta)' }}>
+        <div style={{ background: '#0d161a', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid var(--accent-magenta)' }}>
           <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <span>📏</span> Spectator Distances & Classification
           </h2>
@@ -80,7 +80,7 @@ export default function SafetyPage() {
         </div>
 
         {/* Section 4: Misfire Protocol */}
-        <div style={{ background: '#1a1010', padding: '3rem', borderRadius: '16px', borderLeft: '4px solid red' }}>
+        <div style={{ background: '#1a1010', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '16px', borderLeft: '4px solid red' }}>
           <h2 style={{ fontSize: '2rem', color: 'white', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <span>⚠️</span> The Emergency Misfire Protocol
           </h2>
