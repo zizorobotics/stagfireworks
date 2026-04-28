@@ -55,6 +55,8 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Top Bar Container */
@@ -1477,7 +1479,7 @@ h1, h2, h3, h4 {
   }
   
   .products-wrapper {
-    padding: 2rem 1rem 4rem;
+    padding: 2rem 1.5rem 4rem 0.8rem; /* Shifts left by ~6px and shrinks cards */
   }
 
   .grid {
