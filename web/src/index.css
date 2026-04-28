@@ -349,6 +349,49 @@ h1, h2, h3, h4 {
   visibility: visible;
 }
 
+/* Product Specs Layout */
+.product-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.spec-item {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.spec-label {
+  font-weight: bold;
+}
+.spec-label.magenta {
+  color: var(--accent-magenta);
+}
+.spec-label.cyan {
+  color: var(--accent-cyan);
+}
+
+.spec-value {
+  flex: 1;
+}
+
+@media (max-width: 950px) {
+  .spec-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .spec-value {
+    margin-top: 2px;
+  }
+}
+
 .unlinked-badge {
   position: absolute;
   top: 10px;
