@@ -48,7 +48,7 @@ export default function ProductModal({ product, isOpen, onClose, onAdd }) {
         <button onClick={onClose} style={{ position: 'absolute', top: '15px', right: '15px', background: 'transparent', border: 'none', color: 'var(--text-muted)', fontSize: '2rem', cursor: 'pointer', zIndex: 10 }}>×</button>
         
         {product.linked_video ? (
-          <div style={{ width: '100%', aspectRatio: '16/9', background: '#000', borderRadius: '8px', overflow: 'hidden', marginBottom: '1.5rem' }}>
+          <div className="modal-media-container" style={{ width: '100%', aspectRatio: '16/9', background: '#000', borderRadius: '8px', overflow: 'hidden', marginBottom: '1.5rem' }}>
             <iframe
               width="100%"
               height="100%"
@@ -60,7 +60,7 @@ export default function ProductModal({ product, isOpen, onClose, onAdd }) {
             ></iframe>
           </div>
         ) : (
-          <div style={{ width: '100%', aspectRatio: '16/9', background: '#111', borderRadius: '8px', overflow: 'hidden', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="modal-media-container" style={{ width: '100%', aspectRatio: '16/9', background: '#111', borderRadius: '8px', overflow: 'hidden', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {product.image ? (
               <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             ) : (

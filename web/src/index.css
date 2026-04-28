@@ -577,6 +577,19 @@ h1, h2, h3, h4 {
   transform: translateY(0);
 }
 
+@media (max-width: 900px) and (orientation: landscape) {
+  .modal-content {
+    max-height: 95vh;
+    padding: 1rem !important;
+    overflow-y: auto;
+  }
+  .modal-media-container {
+    height: 40vh !important;
+    width: auto !important;
+    margin: 0 auto 1rem auto !important;
+  }
+}
+
 .form-group {
   margin-bottom: 1rem;
 }
