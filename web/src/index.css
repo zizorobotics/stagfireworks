@@ -337,11 +337,13 @@ h1, h2, h3, h4 {
   transition: all 0.3s;
 }
 
-.product-card:hover .product-img {
+.product-card:hover .product-img,
+.product-card.is-playing .product-img {
   opacity: 0;
 }
 
-.product-card:hover .product-video-overlay {
+.product-card:hover .product-video-overlay,
+.product-card.is-playing .product-video-overlay {
   opacity: 1;
   visibility: visible;
 }

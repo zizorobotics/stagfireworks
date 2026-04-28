@@ -8,10 +8,10 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      // Only apply scroll-play on mobile viewports dynamically
-      if (window.innerWidth > 768) return;
-
       entries.forEach(entry => {
+        // Only trigger scroll-based autoplay on mobile widths
+        if (window.innerWidth > 768) return;
+
         if (entry.isIntersecting) {
           setIsHovered(true);
         } else {
@@ -81,7 +81,7 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
   return (
     <div
       ref={cardRef}
-      className="product-card"
+      className={`product-card ${isHovered ? 'is-playing' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
