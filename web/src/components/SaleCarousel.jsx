@@ -75,9 +75,7 @@ export default function SaleCarousel({ products, onAdd, wishlistItems, handleTog
                 flexShrink: 0
               }}
             >
-              <div style={{ position: 'absolute', top: '-15px', right: '-15px', background: 'red', color: 'white', padding: '1rem', borderRadius: '50%', fontWeight: 'bold', zIndex: 10, boxShadow: '0 0 20px red', transform: 'rotate(15deg)' }}>
-                -50%
-              </div>
+
               <ProductCard
                 product={product}
                 onAdd={onAdd}

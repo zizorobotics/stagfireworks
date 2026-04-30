@@ -37,7 +37,7 @@ function App() {
     brand: ''
   });
   const [showNavbar, setShowNavbar] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(10);
+  const [visibleCount, setVisibleCount] = useState(5);
   const [toastItem, setToastItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showTicker, setShowTicker] = useState(true);
@@ -415,7 +415,7 @@ function App() {
               return p.category === activeCategory;
             }).length > visibleCount && (
                 <div className="show-more-container">
-                  <button className="show-more-btn" onClick={() => setVisibleCount(prev => prev + 10)}>
+                  <button className="show-more-btn" onClick={() => setVisibleCount(prev => prev + 5)}>
                     SHOW MORE
                   </button>
                 </div>
