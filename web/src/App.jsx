@@ -41,7 +41,6 @@ function App() {
   });
   const [showNavbar, setShowNavbar] = useState(false);
   const [visibleCount, setVisibleCount] = useState(5);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [toastItem, setToastItem] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showTicker, setShowTicker] = useState(true);
@@ -493,18 +492,8 @@ function App() {
               return p.category === activeCategory;
             }).length > visibleCount && (
                 <div className="show-more-container">
-                  <button 
-                    className="show-more-btn" 
-                    onClick={() => {
-                      setIsLoadingMore(true);
-                      setTimeout(() => {
-                        setVisibleCount(prev => prev + 5);
-                        setIsLoadingMore(false);
-                      }, 500);
-                    }}
-                    disabled={isLoadingMore}
-                  >
-                    {isLoadingMore ? 'Loading...' : 'SHOW MORE'}
+                  <button className="show-more-btn" onClick={() => setVisibleCount(prev => prev + 5)}>
+                    SHOW MORE
                   </button>
                 </div>
               )}
