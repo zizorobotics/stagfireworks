@@ -98,6 +98,34 @@ h1, h2, h3, h4 {
   letter-spacing: 2px;
 }
 
+/* Desktop Center Menu */
+.nav-center-menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link-btn {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-link-btn:hover {
+  color: var(--accent-cyan);
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
 .cart-btn {
   background: transparent;
   border: 1px solid var(--border-color);
@@ -1794,5 +1822,14 @@ h1, h2, h3, h4 {
   }
   .giant-sale-text-50 {
     font-size: clamp(4rem, 15vw, 6rem);
+  }
+}
+
+@media (max-width: 950px) {
+  .nav-center-menu {
+    display: none !important;
+  }
+  .hamburger-btn {
+    display: flex !important;
   }
 }

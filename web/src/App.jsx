@@ -15,6 +15,9 @@ import BrandMarquee from './components/BrandMarquee';
 import SmartBudgeter from './components/SmartBudgeter';
 import AdminDashboard from './components/AdminDashboard';
 import PromoPage from './components/PromoPage';
+import DeliveryPage from './components/DeliveryPage';
+import CommunityPage from './components/CommunityPage';
+import Testimonials from './components/Testimonials';
 import { supabase } from './supabaseClient';
 import productsFile from './data/products.json';
 
@@ -140,28 +143,29 @@ function App() {
 
   const isSafetyPage = window.location.pathname === '/safety';
   const isPromoPage = window.location.pathname === '/more';
+  const isDeliveryPage = window.location.pathname === '/delivery';
+  const isCommunityPage = window.location.pathname === '/community';
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="app-container">
-      <div className={`top-bar-container ${showNavbar || isSafetyPage || isPromoPage ? 'visible' : ''}`}>
-        <nav className="navbar" style={isSafetyPage || isPromoPage ? { background: 'rgba(11, 11, 15, 0.98)' } : {}}>
+      <div className={`top-bar-container ${showNavbar || isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? 'visible' : ''}`}>
+        <nav className="navbar" style={isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? { background: 'rgba(11, 11, 15, 0.98)' } : {}}>
           <div className="nav-brand" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
             <img src="/images/StagFireworksLogo.png" alt="Stag Fireworks" style={{ height: '35px', objectFit: 'contain' }} />
           </div>
-          <div className="nav-buttons-container" style={{ display: 'flex', gap: '1rem' }}>
-            <button className="cart-btn" onClick={() => window.location.href = '/safety'} style={{ color: 'var(--accent-cyan)' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-              <span className="nav-btn-text">Safety</span>
-            </button>
-            <button className="cart-btn" onClick={() => setIsContactOpen(true)}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span className="nav-btn-text">Contact</span>
-            </button>
+
+          {/* Desktop Central Menu */}
+          <div className="nav-center-menu">
+            <button className="nav-link-btn" onClick={() => window.location.href = '/'}>Home</button>
+            <button className="nav-link-btn" onClick={() => { if(window.location.pathname !== '/') { window.location.href = '/' } else { setActiveCategory('All'); document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})} }}>Shop</button>
+            <button className="nav-link-btn" onClick={() => window.location.href = '/delivery'}>Delivery & T&C</button>
+            <button className="nav-link-btn" onClick={() => window.location.href = '/community'}>Community Blog</button>
+            <button className="nav-link-btn" onClick={() => setIsContactOpen(true)}>Contact</button>
+          </div>
+
+          <div className="nav-buttons-container" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <button className="cart-btn" onClick={() => setIsWishlistOpen(true)}>
               <span style={{ fontSize: '1.2rem', color: wishlistItems.length > 0 ? 'var(--accent-magenta)' : 'inherit' }}>
                 {wishlistItems.length > 0 ? '♥' : '♡'}
@@ -175,9 +179,16 @@ function App() {
               </svg>
               <span className="nav-btn-text">Cart</span> <span className="cart-badge">{totalItems}</span>
             </button>
+            <button className="hamburger-btn" onClick={() => setIsMobileMenuOpen(true)}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
           </div>
         </nav>
-        {showTicker && !isSafetyPage && !isPromoPage && (
+        {showTicker && !isSafetyPage && !isPromoPage && !isDeliveryPage && !isCommunityPage && (
           <div className="promo-ticker" style={{ position: 'relative' }}>
             <div className="promo-ticker-track">
               <span className="promo-ticker-text">🔥 MOST FIREWORKS UP TO 50% OFF RRP! 🔥 EXCLUSIVE VIVID FIREWORKS! 🔥</span>
@@ -196,10 +207,29 @@ function App() {
         )}
       </div>
 
+      {/* Mobile Full-Screen Menu */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-overlay" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', background: 'rgba(11, 11, 15, 0.98)', zIndex: 9999, display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+          <button onClick={() => setIsMobileMenuOpen(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer' }}>×</button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem', fontSize: '1.5rem', fontWeight: 'bold' }}>
+            <a href="/" style={{ color: '#fff', textDecoration: 'none' }}>Home</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); if(window.location.pathname !== '/') { window.location.href = '/' } else { setActiveCategory('All'); document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})} }} style={{ color: '#fff', textDecoration: 'none' }}>Shop Fireworks</a>
+            <a href="/delivery" style={{ color: '#fff', textDecoration: 'none' }}>Delivery & Returns T&C</a>
+            <a href="/community" style={{ color: '#fff', textDecoration: 'none' }}>Community Blog</a>
+            <a href="/safety" style={{ color: '#fff', textDecoration: 'none' }}>Safety Guide</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setIsContactOpen(true); }} style={{ color: '#fff', textDecoration: 'none' }}>Contact Us</a>
+          </div>
+        </div>
+      )}
+
       {isSafetyPage ? (
         <SafetyPage />
       ) : isPromoPage ? (
         <PromoPage />
+      ) : isDeliveryPage ? (
+        <DeliveryPage />
+      ) : isCommunityPage ? (
+        <CommunityPage />
       ) : (
         <>
           <div className="hero-scroll-wrapper">
@@ -247,6 +277,34 @@ function App() {
                   style={{ '--cat-color': '#ffb3d9' }}
                 >
                   🔥 ON SALE
+                </button>
+                <button
+                  className={`cat-btn custom-cat ${activeCategory === 'NEW IN' ? 'active' : ''}`}
+                  onClick={() => setActiveCategory('NEW IN')}
+                  style={{ '--cat-color': '#00ffcc' }}
+                >
+                  NEW IN
+                </button>
+                <button
+                  className={`cat-btn custom-cat ${activeCategory === 'CHEAPEST' ? 'active' : ''}`}
+                  onClick={() => setActiveCategory('CHEAPEST')}
+                  style={{ '--cat-color': '#55ff55' }}
+                >
+                  CHEAPEST
+                </button>
+                <button
+                  className={`cat-btn custom-cat ${activeCategory === 'LOUD!' ? 'active' : ''}`}
+                  onClick={() => setActiveCategory('LOUD!')}
+                  style={{ '--cat-color': '#ff3333' }}
+                >
+                  LOUD!
+                </button>
+                <button
+                  className={`cat-btn custom-cat ${activeCategory === 'Low Noise' ? 'active' : ''}`}
+                  onClick={() => setActiveCategory('Low Noise')}
+                  style={{ '--cat-color': '#99ccff' }}
+                >
+                  LOW NOISE
                 </button>
 
                 {/* Thematic Category Buttons */}
@@ -362,6 +420,11 @@ function App() {
                     return p.description?.toLowerCase().includes(lowerOccasion) || p.name.toLowerCase().includes(lowerOccasion);
                   }
                   if (activeCategory === 'Low Noise') return p.category === 'Low Noise' || (p.specs?.noise && parseInt(String(p.specs.noise).split('/')[0]) <= 2);
+                  if (activeCategory === 'LOUD!') {
+                    const noiseLevel = parseInt(String(p.specs?.noise).split('/')[0]) || 0;
+                    return noiseLevel >= 4 || p.description?.toLowerCase().includes('loud') || p.name.toLowerCase().includes('loud');
+                  }
+                  if (activeCategory === 'CHEAPEST' || activeCategory === 'NEW IN') return true;
 
                   return p.category === activeCategory;
                 })
@@ -391,6 +454,16 @@ function App() {
 
                   return true;
                 })
+                .sort((a, b) => {
+                  if (activeCategory === 'CHEAPEST') {
+                    return (Number(a.price) || 0) - (Number(b.price) || 0);
+                  }
+                  if (activeCategory === 'NEW IN') {
+                    // Simple proxy for newest: String comparison on ID or videoId
+                    return String(b.id).localeCompare(String(a.id));
+                  }
+                  return 0;
+                })
                 .slice(0, visibleCount)
                 .map(product => (
                   <ProductCard
@@ -405,8 +478,12 @@ function App() {
             </div>
 
             {productsData.filter(p => {
-              if (activeCategory === 'All') return true;
-              if (activeCategory === 'BEST SELLERS' || activeCategory === 'NEW IN') return true;
+              if (['All', 'BEST SELLERS', 'NEW IN', 'CHEAPEST'].includes(activeCategory)) return true;
+              if (activeCategory === 'Low Noise') return p.category === 'Low Noise' || (p.specs?.noise && parseInt(String(p.specs.noise).split('/')[0]) <= 2);
+              if (activeCategory === 'LOUD!') {
+                const noiseLevel = parseInt(String(p.specs?.noise).split('/')[0]) || 0;
+                return noiseLevel >= 4 || p.description?.toLowerCase().includes('loud') || p.name.toLowerCase().includes('loud');
+              }
               if (activeCategory === 'VIVID') return p.name.toLowerCase().includes('vivid') || p.description?.toLowerCase().includes('vivid');
               if (activeCategory === 'Diwali') return p.description?.toLowerCase().includes('diwali') || p.name.toLowerCase().includes('diwali') || p.category === 'Compounds & Barrages';
               if (activeCategory === 'Gender Reveals') return p.description?.toLowerCase().includes('gender') || p.name.toLowerCase().includes('gender') || p.description?.toLowerCase().includes('pink') || p.description?.toLowerCase().includes('blue');
@@ -442,6 +519,7 @@ function App() {
 
           <TrajectoryJourney setActiveCategory={setActiveCategory} />
 
+          <Testimonials />
           <FooterSections setActiveCategory={setActiveCategory} />
         </>
       )}
