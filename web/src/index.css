@@ -1833,3 +1833,35 @@ h1, h2, h3, h4 {
     display: flex !important;
   }
 }
+
+
+/* Sidebar Responsive Breakpoint */
+@media (max-width: 950px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .desktop-sidebar {
+    display: none !important;
+  }
+  
+  .top-bar-container {
+    display: flex !important;
+  }
+  
+  .nav-left-group {
+    gap: 1rem !important;
+  }
+  
+  .nav-center-menu {
+    display: none !important;
+  }
+  
+  .hamburger-btn {
+    display: block !important;
+  }
+  
+  .cart-btn .nav-btn-text {
+    display: none;
+  }
+}

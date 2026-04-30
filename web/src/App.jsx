@@ -150,7 +150,32 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className={`top-bar-container ${showNavbar || isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? 'visible' : ''}`}>
+      {/* Desktop Left Sidebar */}
+      <nav className="desktop-sidebar">
+        <div className="nav-brand" style={{ cursor: 'pointer' }} onClick={() => window.location.href = '/'}>
+          <img src="/images/StagFireworksLogo.png" alt="Stag Fireworks" style={{ height: '40px', objectFit: 'contain' }} />
+        </div>
+        <div className="sidebar-menu">
+          <button className="nav-link-btn" onClick={() => window.location.href = '/'}>Home</button>
+          <button className="nav-link-btn" onClick={() => { if(window.location.pathname !== '/') { window.location.href = '/' } else { setActiveCategory('All'); document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})} }}>Shop</button>
+          <button className="nav-link-btn" onClick={() => window.location.href = '/delivery'}>Delivery & T&C</button>
+          <button className="nav-link-btn" onClick={() => window.location.href = '/community'}>Community Blog</button>
+          <button className="nav-link-btn" onClick={() => setIsContactOpen(true)}>Contact</button>
+        </div>
+        <div className="sidebar-bottom">
+          <button className="cart-btn" onClick={() => setIsWishlistOpen(true)}>
+            <span style={{ fontSize: '1.2rem', color: wishlistItems.length > 0 ? 'var(--accent-magenta)' : 'inherit' }}>{wishlistItems.length > 0 ? '♥' : '♡'}</span>
+            <span className="nav-btn-text">Wishlist</span> <span className="cart-badge" style={{ background: 'transparent', border: '1px solid currentColor' }}>{wishlistItems.length}</span>
+          </button>
+          <button className="cart-btn" onClick={() => setIsCartOpen(true)}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span className="nav-btn-text">Cart</span> <span className="cart-badge">{totalItems}</span>
+          </button>
+        </div>
+      </nav>
+
+      <div className="main-content">
+        <div className={`top-bar-container ${showNavbar || isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? 'visible' : ''}`}>
         <nav className="navbar" style={isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? { background: 'rgba(11, 11, 15, 0.98)' } : {}}>
           <div className="nav-left-group" style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
             <div className="nav-brand" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
@@ -569,6 +594,7 @@ function App() {
 
       <div className={`toast-notification ${toastItem ? 'visible' : ''}`}>
         ✓ Added {toastItem} to cart
+      </div>
       </div>
     </div>
   );
