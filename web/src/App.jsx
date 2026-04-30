@@ -152,17 +152,19 @@ function App() {
     <div className="app-container">
       <div className={`top-bar-container ${showNavbar || isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? 'visible' : ''}`}>
         <nav className="navbar" style={isSafetyPage || isPromoPage || isDeliveryPage || isCommunityPage ? { background: 'rgba(11, 11, 15, 0.98)' } : {}}>
-          <div className="nav-brand" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
-            <img src="/images/StagFireworksLogo.png" alt="Stag Fireworks" style={{ height: '35px', objectFit: 'contain' }} />
-          </div>
+          <div className="nav-left-group" style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
+            <div className="nav-brand" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
+              <img src="/images/StagFireworksLogo.png" alt="Stag Fireworks" style={{ height: '35px', objectFit: 'contain' }} />
+            </div>
 
-          {/* Desktop Central Menu */}
-          <div className="nav-center-menu">
-            <button className="nav-link-btn" onClick={() => window.location.href = '/'}>Home</button>
-            <button className="nav-link-btn" onClick={() => { if(window.location.pathname !== '/') { window.location.href = '/' } else { setActiveCategory('All'); document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})} }}>Shop</button>
-            <button className="nav-link-btn" onClick={() => window.location.href = '/delivery'}>Delivery & T&C</button>
-            <button className="nav-link-btn" onClick={() => window.location.href = '/community'}>Community Blog</button>
-            <button className="nav-link-btn" onClick={() => setIsContactOpen(true)}>Contact</button>
+            {/* Desktop Central Menu */}
+            <div className="nav-center-menu">
+              <button className="nav-link-btn" onClick={() => window.location.href = '/'}>Home</button>
+              <button className="nav-link-btn" onClick={() => { if(window.location.pathname !== '/') { window.location.href = '/' } else { setActiveCategory('All'); document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})} }}>Shop</button>
+              <button className="nav-link-btn" onClick={() => window.location.href = '/delivery'}>Delivery & T&C</button>
+              <button className="nav-link-btn" onClick={() => window.location.href = '/community'}>Community Blog</button>
+              <button className="nav-link-btn" onClick={() => setIsContactOpen(true)}>Contact</button>
+            </div>
           </div>
 
           <div className="nav-buttons-container" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
