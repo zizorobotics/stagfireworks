@@ -2,46 +2,46 @@ import fs from 'fs';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://sxrjbhfcxuvrctpnhoxm.supabase.co';
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; 
+const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4cmpiaGZjeHV2cmN0cG5ob3htIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MTA1NTYsImV4cCI6MjA5MjE4NjU1Nn0.3V_Cpoji8_jtwpP3hRG0whdMf0xVy1_jGVa4gEGylc0'; 
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 const requestedPrices = {
-  "Peking Opera 3": 499,
-  "Bloodshot": 199,
-  "Delirious": 129,
-  "Scatterbrain": 55,
-  "Fireflash": 49,
-  "Jeopardy": 99,
-  "Jeapordy": 99,
-  "VSR2": 79,
-  "VS4": 79,
-  "VSR4": 79,
-  "Gold fever": 189,
-  "Sky candy XL": 179,
-  "Wtf 512": 399,
-  "Ziegelstein": 289,
-  "Breakout": 49,
-  "Legends assortment": 159,
-  "Loose cannon": 59,
-  "Sky vandal xl": 619,
-  "Sky vandal": 499, // After XL
-  "Reapers": 49,
-  "The asylum": 189, // Was "The asylum selection"
-  "Face off": 179, // Was Face off round 1 & round 2 together
-  "Freak": 99,
-  "Laughing gas": 69,
-  "Delirium": 409,
-  "F2 Ultra Pro selection box": 99,
-  "Snake bite": 99,
-  "Kamuro Rainbow XL": 189,
-  "Straight up crazy": 149,
-  "Wizard wands": 19,
-  "El Loco": 499,
-  "Velocity Compound": 229, // "Velocity"
-  "Terminal Velocity": 299,
-  "Anti Venom": 79,
-  "Venom": 79, // After Anti Venom
+  "peking opera 3": 499,
+  "bloodshot": 199,
+  "delirious": 129,
+  "scatterbrain": 55,
+  "fire flash": 49,
+  "jeopardy": 99,
+  "vsr2": 79,
+  "vs4": 79,
+  "vsr4": 79,
+  "gold fever": 189,
+  "sky candy xl": 179,
+  "wtf 512": 399,
+  "zeigelstein": 289,
+  "breakout": 49,
+  "legends": 159,
+  "loose cannon": 59,
+  "sky vandal xl": 619,
+  "sky vandal": 499,
+  "reapers": 49,
+  "asylum": 189,
+  "face off": 179,
+  "freak": 99,
+  "laughing gas": 69,
+  "delirium": 409,
+  "f2 ultra pro": 99,
+  "snake bite": 99,
+  "kamuro rainbow xl": 189,
+  "straight up crazy": 149,
+  "wizard wands": 19,
+  "el loco": 499,
+  "velocity": 229,
+  "terminal velocity": 299,
+  "anti-venom": 79,
+  "anti venom": 79,
+  "venom": 79,
 };
 
 async function runUpdate() {
@@ -54,32 +54,18 @@ async function runUpdate() {
     
     // Ordered specifically to catch larger strings first (e.g. Anti-Venom vs Venom)
     for (const [key, price] of Object.entries(requestedPrices)) {
-      if (lowerName.includes(key.toLowerCase())) {
-        // Tag it securely
-        p.price_rrp = price;
+      if (lowerName.includes(key)) {
+        // SET THE REAL PRICE
+        p.price = price;
         matched[key] = (matched[key] || 0) + 1;
         break;
       }
     }
-    
-    // Assign an arbitrary missing RRP (or generate one based on missing items) just for visuals
-    if (!p.price_rrp) {
-        // Let's create a generic RRP placeholder for products not in the list 
-        // We ensure all products have one to validate the Phase 2 visual overhaul
-        p.price_rrp = Math.floor(Math.random() * 50) * 10 + 99; // Between 99 to 599 for demo explicitly
-    }
   });
 
   fs.writeFileSync('web/src/data/products.json', JSON.stringify(products, null, 2));
-  console.log(`Matched RRP objects:`, matched);
-  
-  // Push natively back into Supabase
-  console.log("Pushing new RRP prices directly into Supabase 'products' table.");
-  for (let p of products) {
-    const { error } = await supabase.from('products').update({ price: `£${p.price_rrp}.00`, rrp: true }).eq('id', p.id);
-    if (error) console.error("Error updating", p.id, error.message);
-  }
-  console.log("Complete!");
+  console.log(`Matched objects:`, matched);
+  console.log("Complete! products.json has been updated.");
 }
 
 runUpdate();

@@ -73,7 +73,7 @@ function App() {
             try { parsedSpecs = JSON.parse(p.specs); } catch (e) { }
           }
           const localEquiv = productsFile.find(localP => localP.id === p.id);
-          const resolvedPrice = p.price || parsedSpecs?.price || localEquiv?.price || '';
+          const resolvedPrice = localEquiv?.price || p.price || parsedSpecs?.price || '';
           return { ...p, specs: parsedSpecs || {}, price: resolvedPrice };
         }));
       } else {
