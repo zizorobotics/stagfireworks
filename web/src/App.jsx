@@ -238,8 +238,6 @@ function App() {
             </section>
           </div>
 
-          <BrandMarquee setActiveCategory={setActiveCategory} />
-
           <main className="products-wrapper">
             <h2 className="section-title">Our Collection</h2>
 
@@ -508,6 +506,8 @@ function App() {
             />
 
           </main>
+
+          <BrandMarquee setActiveCategory={setActiveCategory} />
 
           <SaleCarousel
             products={productsData}
