@@ -116,3 +116,21 @@
   from { transform: rotateY(360deg); }
   to { transform: rotateY(0deg); }
 }
+
+@media (max-width: 768px) {
+  .brand-marquee-section {
+    padding: 2rem 0.5rem;
+  }
+  .brand-item {
+    width: 75px;
+    height: 55px;
+  }
+  .brand-marquee-track {
+    gap: 1rem;
+  }
+  .brand-front, .brand-back {
+    padding: 4px;
+    border-radius: 6px;
+    border-width: 1px;
+  }
+}

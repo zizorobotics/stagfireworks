@@ -110,12 +110,12 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
             </div>
           );
         })()}
-        
+
         {product.price && (
           <div style={{
             position: 'absolute',
-            top: '4px',
-            right: '-6px',
+            top: '-2px',
+            right: '-11px',
             background: 'var(--accent-magenta)',
             color: 'white',
             padding: '0.4rem 0.8rem',
@@ -125,16 +125,16 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
             zIndex: 20,
             boxShadow: '0 4px 15px rgba(225, 48, 108, 0.4)',
             letterSpacing: '0.5px',
-            transform: 'rotate(25deg)'
+            transform: 'rotate(5deg)'
           }}>
             RRP £{product.price}
           </div>
         )}
         {product.image ? (
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="product-img" 
+          <img
+            src={product.image}
+            alt={product.name}
+            className="product-img"
           />
         ) : (
           <div className="product-img" style={{ background: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
