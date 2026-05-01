@@ -110,6 +110,25 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
             </div>
           );
         })()}
+        
+        {product.price && (
+          <div style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            background: 'var(--accent-magenta)',
+            color: 'white',
+            padding: '0.4rem 0.8rem',
+            borderRadius: '20px',
+            fontWeight: 'bold',
+            fontSize: '0.9rem',
+            zIndex: 20,
+            boxShadow: '0 4px 15px rgba(225, 48, 108, 0.4)',
+            letterSpacing: '0.5px'
+          }}>
+            RRP £{product.price}
+          </div>
+        )}
         {product.image ? (
           <img 
             src={product.image} 

@@ -238,6 +238,8 @@ function App() {
             </section>
           </div>
 
+          <BrandMarquee setActiveCategory={setActiveCategory} />
+
           <main className="products-wrapper">
             <h2 className="section-title">Our Collection</h2>
 
@@ -514,8 +516,6 @@ function App() {
             handleToggleWishlist={handleToggleWishlist}
             setSelectedProduct={setSelectedProduct}
           />
-
-          <BrandMarquee setActiveCategory={setActiveCategory} />
 
           <TrajectoryJourney setActiveCategory={setActiveCategory} />
 
