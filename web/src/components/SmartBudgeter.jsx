@@ -202,7 +202,7 @@ export default function SmartBudgeter({ products, onAdd, wishlistItems, onToggle
             style={{
               padding: '1rem 3rem',
               fontSize: '1.2rem',
-              background: 'linear-gradient(45deg, var(--accent-magenta), var(--accent-cyan))',
+              background: 'linear-gradient(45deg, #ff1493, #ff69b4)',
               color: 'white',
               border: 'none',
               borderRadius: '30px',

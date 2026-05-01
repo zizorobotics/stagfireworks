@@ -191,7 +191,7 @@ export default function ProductCard({ product, onAdd, isWishlisted, onToggleWish
         ) : (
           <p className="product-desc">{product.description}</p>
         )}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: 'auto' }}>
           <button
             onClick={() => onToggleWishlist(product)}
             style={{
