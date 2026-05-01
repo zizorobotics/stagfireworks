@@ -33,9 +33,9 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onComplete }
     setLoading(true);
     setErrorMsg('');
 
-    const SERVICE_ID = 'service_oz71l0e';
-    const TEMPLATE_ID = 'template_roelkc9';
-    const PUBLIC_KEY = 'oxFW32FJ14fnImBKo';
+    const SERVICE_ID = 'service_900k22s';
+    const TEMPLATE_ID = 'template_v2j4u49';
+    const PUBLIC_KEY = 'PKtoqhMU9kbkRDn-b';
 
     const itemsSummary = cartItems.map(item => `${item.quantity}x ${item.name}`).join('\n');
 
