@@ -6,6 +6,7 @@ export default function FireworkAnimation() {
 
   const descRef = useRef(null);
   const [images, setImages] = useState([]);
+  const [loadedCount, setLoadedCount] = useState(0);
 
   const totalFrames = 198;
   const startFrame = 0; // Starting from the very beginning naturally!
@@ -13,7 +14,7 @@ export default function FireworkAnimation() {
   // Preload images
   useEffect(() => {
     const loadedImages = [];
-    let loadedCount = 0;
+    let currentCount = 0;
 
     // We strictly preload the entire sequence
     for (let i = startFrame; i < totalFrames; i++) {
@@ -21,8 +22,9 @@ export default function FireworkAnimation() {
       img.src = `/animation/compressed_webp/Pre-comp 1_${i.toString().padStart(5, '0')}.webp`;
 
       const onload = () => {
-        loadedCount++;
-        if (loadedCount === (totalFrames - startFrame)) {
+        currentCount++;
+        setLoadedCount(currentCount);
+        if (currentCount === (totalFrames - startFrame)) {
           setImages(loadedImages);
         }
       };
@@ -170,15 +172,78 @@ export default function FireworkAnimation() {
     };
   }, [images]);
 
+  const isLoaded = loadedCount === (totalFrames - startFrame);
+  const loadingProgress = Math.round((loadedCount / (totalFrames - startFrame)) * 100);
+
   return (
     <>
-      <div className="hero-content">
+      {!isLoaded && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 100,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1.5rem',
+          background: 'rgba(11,11,15,0.7)',
+          padding: '2rem 3rem',
+          borderRadius: '16px',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255,255,255,0.05)',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+        }}>
+          <h2 style={{ 
+            color: 'white', 
+            fontFamily: 'Outfit',
+            letterSpacing: '3px',
+            textTransform: 'uppercase',
+            margin: 0,
+            fontSize: '1.5rem',
+            background: 'linear-gradient(90deg, #fff, #ccc)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            Loading Fireworks...
+          </h2>
+          <div style={{ 
+            width: '250px', 
+            height: '6px', 
+            background: 'rgba(255,255,255,0.1)',
+            borderRadius: '10px',
+            overflow: 'hidden',
+            boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{
+              height: '100%',
+              width: `${loadingProgress}%`,
+              background: 'linear-gradient(90deg, var(--accent-magenta), var(--accent-cyan))',
+              transition: 'width 0.1s ease-out',
+              borderRadius: '10px',
+              boxShadow: '0 0 10px var(--accent-magenta)'
+            }} />
+          </div>
+          <span style={{ 
+            color: 'var(--accent-cyan)', 
+            fontSize: '1rem', 
+            fontWeight: '800',
+            fontFamily: 'Outfit',
+            letterSpacing: '1px'
+          }}>
+            {loadingProgress}%
+          </span>
+        </div>
+      )}
+      
+      <div className="hero-content" style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 1s ease' }}>
         <p className="hero-desc" ref={descRef}>
           Explore our premium range of fireworks.<br />
           Hover on fireworks, and watch them explode live.
         </p>
       </div>
-      <div className="firework-animation-container" ref={containerRef}>
+      <div className="firework-animation-container" ref={containerRef} style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 1s ease' }}>
         <canvas ref={canvasRef} />
       </div>
     </>
