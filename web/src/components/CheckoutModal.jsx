@@ -204,7 +204,7 @@ export default function CheckoutModal({ isOpen, onClose, cartItems, onComplete }
                   <button type="button" onClick={onClose} className="submit-btn" style={{ background: 'transparent', border: '1px solid var(--border-color)', marginTop: 0 }}>
                     Cancel
                   </button>
-                  <button type="submit" className="submit-btn" disabled={loading} style={{ margin: 0, flex: 2, background: orderType === 'collection' ? 'linear-gradient(90deg, #ff1493, #8a2be2)' : 'linear-gradient(90deg, #00f0ff, #0051ff)' }}>
+                  <button type="submit" className="submit-btn" disabled={loading} style={{ margin: 0, flex: 2, background: orderType === 'collection' ? '#ff1493' : '#ffd700', color: orderType === 'collection' ? 'white' : '#000' }}>
                     {loading ? 'Processing...' : `Confirm ${orderType === 'collection' ? 'Collection' : 'Delivery'}`}
                   </button>
                 </div>
