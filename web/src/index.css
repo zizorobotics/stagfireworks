@@ -1009,11 +1009,13 @@ h1, h2, h3, h4 {
 }
 
 .pro-title {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 9vw, 3.5rem);
   color: #fff;
   margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(-20px);
+  line-height: 1.2;
+  word-wrap: break-word;
 }
 
 .pro-text p {
@@ -1822,6 +1824,10 @@ h1, h2, h3, h4 {
   }
   .giant-sale-text-50 {
     font-size: clamp(4rem, 15vw, 6rem);
+  }
+
+  .pro-display-banner {
+    padding: 6rem 1rem;
   }
 }
 
