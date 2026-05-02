@@ -5,31 +5,18 @@ export default function Testimonials() {
   const [reviews, setReviews] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Fallback reviews in case database fetch fails or table is empty
+  // We strictly use the provided Google reviews for absolute realism
   const fallbackReviews = [
-    { customer_name: 'Mark D.', rating: 5, review_text: 'Absolutely incredible fireworks. The Vivid range blew my mind. Much better than the supermarket rubbish I used to buy!' },
-    { customer_name: 'Sarah J.', rating: 5, review_text: 'Fast delivery, really helpful staff. I asked for low-noise fireworks for my dogs and they pointed me to exactly what I needed. Everything worked perfectly.' },
-    { customer_name: 'James T.', rating: 5, review_text: 'The Big Boss compound was the highlight of our Bonfire Night. Unbelievable hang time and colors. Will be ordering again for New Years!' },
-    { customer_name: 'Liam W.', rating: 5, review_text: 'Best fireworks in South Yorkshire by far. Stag Fireworks never disappoints, their prices are unbeatable for the quality you get.' }
+    { customer_name: 'RazzleD', rating: 5, review_text: 'Great selection of fireworks. They made me a unique selection pack taking into mind my budget ...We loved their little package was very enjoyable and fun for all of us. Would highly recommend Stag fireworks' },
+    { customer_name: 'Shak', rating: 5, review_text: 'Just bought fireworks from this shop. Great service and a wide range of fireworks for decent prices. Deffo coming back here for bonfire night' },
+    { customer_name: 'James Barber', rating: 5, review_text: 'I went in with a set price and the guys running the shop could not be more helpful, i explained what i was looking for and he made me a bespoke selection that ...' },
+    { customer_name: 'Sahil Khaliq (SK1405)', rating: 5, review_text: 'Incredible selection of fireworks and great service. Close by and easy to find as well.' },
+    { customer_name: 'Josh Otley', rating: 5, review_text: 'Great little firework shop, loads of choice, something to suit all budgets. Owners are very good and friendly.' }
   ];
 
   useEffect(() => {
-    fetchReviews();
+    setReviews(fallbackReviews);
   }, []);
-
-  const fetchReviews = async () => {
-    const { data, error } = await supabase
-      .from('testimonials')
-      .select('*')
-      .eq('is_published', true)
-      .order('created_at', { ascending: false });
-
-    if (!error && data && data.length > 0) {
-      setReviews(data);
-    } else {
-      setReviews(fallbackReviews);
-    }
-  };
 
   useEffect(() => {
     if (reviews.length === 0) return;
@@ -63,8 +50,11 @@ export default function Testimonials() {
           <p style={{ fontSize: '1.2rem', fontStyle: 'italic', lineHeight: '1.6', marginBottom: '1rem', color: 'var(--text-main)' }}>
             "{currentReview.review_text}"
           </p>
-          <p style={{ fontWeight: 'bold', color: 'var(--accent-cyan)' }}>
-            - {currentReview.customer_name}
+          <p style={{ fontWeight: 'bold', color: 'var(--accent-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+            {currentReview.customer_name} 
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 'normal', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              • Review from <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google
+            </span>
           </p>
         </div>
       </div>
