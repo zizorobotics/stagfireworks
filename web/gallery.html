@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; background: #222; color: #fff; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 20px; }
+    .card { background: #333; padding: 10px; border-radius: 8px; width: 300px; }
+    .card img { max-width: 100%; height: auto; }
+    .filename { font-size: 12px; margin-top: 5px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>Firework Images OCR Task</h1>
+  <div class="gallery" id="gallery"></div>
+  <script>
+    // Assuming we run this via a simple local server
+    fetch('/images_list.json')
+      .then(res => res.json())
+      .then(files => {
+        const gallery = document.getElementById('gallery');
+        files.forEach(file => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="/new_fireworks/${file}" />
+            <div class="filename">${file}</div>
+          `;
+          gallery.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>
