@@ -18,16 +18,16 @@ export default function Wishlist({ isOpen, items, onClose, onAdd, onRemove }) {
                 <div className="cart-item-info">
                   <h4 className="cart-item-title" style={{ color: 'white' }}>{item.name}</h4>
                   <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
-                    <button 
-                      className="add-btn" 
-                      style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem', flex: 1 }} 
+                    <button
+                      className="add-btn"
+                      style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem', flex: 1 }}
                       onClick={() => onAdd(item)}
                     >
                       Add to Cart
                     </button>
-                    <button 
-                      className="qty-btn" 
-                      style={{ width: 'auto', padding: '0 0.8rem', fontSize: '0.75rem', background: 'rgba(255,0,0,0.2)', color: '#ff6b6b' }} 
+                    <button
+                      className="qty-btn"
+                      style={{ width: 'auto', padding: '0 0.8rem', fontSize: '0.75rem', background: 'rgba(255,0,0,0.2)', color: '#ff6b6b' }}
                       onClick={() => onRemove(item.id)}
                     >
                       Remove

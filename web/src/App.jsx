@@ -108,6 +108,18 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle cross-page category selection from the hamburger menu
+  useEffect(() => {
+    const pendingCategory = sessionStorage.getItem('pendingCategory');
+    if (pendingCategory && window.location.pathname === '/') {
+      setActiveCategory(pendingCategory);
+      sessionStorage.removeItem('pendingCategory');
+      setTimeout(() => {
+        document.querySelector('.products-wrapper')?.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
+  }, []);
+
   const categories = ['All', ...new Set(productsData.map(p => p.category))];
 
   const handleAddToCart = (product) => {
@@ -209,11 +221,37 @@ function App() {
 
       {/* Mobile Full-Screen Menu */}
       {isMobileMenuOpen && (
-        <div className="mobile-menu-overlay" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', background: 'rgba(11, 11, 15, 0.98)', zIndex: 9999, display: 'flex', flexDirection: 'column', padding: '2rem' }}>
-          <button onClick={() => setIsMobileMenuOpen(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer' }}>×</button>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem', fontSize: '1.5rem', fontWeight: 'bold' }}>
+        <div className="mobile-menu-overlay" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', background: 'rgba(11, 11, 15, 0.98)', zIndex: 9999, display: 'flex', flexDirection: 'column', padding: '2rem', overflowY: 'auto', paddingBottom: '4rem' }}>
+          <button onClick={() => setIsMobileMenuOpen(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer', padding: '0.5rem' }}>×</button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem', fontSize: '1.5rem', fontWeight: 'bold' }}>
             <a href="/" style={{ color: '#fff', textDecoration: 'none' }}>Home</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); if(window.location.pathname !== '/') { window.location.href = '/' } else { setActiveCategory('All'); document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})} }} style={{ color: '#fff', textDecoration: 'none' }}>Shop Fireworks</a>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <span style={{ color: 'var(--accent-magenta)', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>Shop Fireworks</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', paddingLeft: '1.5rem', fontSize: '1.2rem', fontWeight: 'normal' }}>
+                {categories.filter(Boolean).map(cat => (
+                  <a 
+                    key={cat}
+                    href="#" 
+                    onClick={(e) => { 
+                      e.preventDefault(); 
+                      setIsMobileMenuOpen(false); 
+                      if(window.location.pathname !== '/') { 
+                        sessionStorage.setItem('pendingCategory', cat);
+                        window.location.href = '/'; 
+                      } else { 
+                        setActiveCategory(cat); 
+                        document.querySelector('.products-wrapper')?.scrollIntoView({behavior: 'smooth'})
+                      } 
+                    }} 
+                    style={{ color: '#fff', textDecoration: 'none', opacity: 0.9 }}
+                  >
+                    {cat === 'All' ? 'View All' : cat}
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <a href="/delivery" style={{ color: '#fff', textDecoration: 'none' }}>Delivery & Returns T&C</a>
             <a href="/community" style={{ color: '#fff', textDecoration: 'none' }}>Community Blog</a>
             <a href="/safety" style={{ color: '#fff', textDecoration: 'none' }}>Safety Guide</a>
