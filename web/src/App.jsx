@@ -74,7 +74,8 @@ function App() {
           }
           const localEquiv = productsFile.find(localP => localP.id === p.id);
           const resolvedPrice = localEquiv?.price || p.price || parsedSpecs?.price || '';
-          return { ...p, specs: parsedSpecs || {}, price: resolvedPrice };
+          const resolvedImage = localEquiv?.image || p.image;
+          return { ...p, specs: parsedSpecs || {}, price: resolvedPrice, image: resolvedImage };
         }));
       } else {
         setProductsData(productsFile.map(p => ({ ...p, price: p.price || p.specs?.price })));
